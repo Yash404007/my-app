@@ -12,11 +12,15 @@ const Component = styled(Box)`
 
 const Home = () => {
   return (
+    
+
+    
   <Component>
   <Navbar/>
 
 
   </Component>
+  
   )
 }
 
