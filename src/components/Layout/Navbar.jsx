@@ -124,7 +124,7 @@ function NavListMenu() {
         <MenuHandler>
           <Typography as="div" variant="small" className="font-medium">
             <ListItem
-              className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900"
+              className="flex items-center gap-2 py-2 pr-4 font-medium text-white"
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
@@ -164,7 +164,7 @@ function NavList() {
         as="a"
         href="#"
         variant="small"
-        color="blue-gray"
+        color="white"
         className="font-medium"
       >
         <ListItem className="flex items-center gap-2 py-2 pr-4">Home</ListItem>
@@ -174,7 +174,7 @@ function NavList() {
         as="a"
         href="#"
         variant="small"
-        color="blue-gray"
+        color="white"
         className="font-medium"
       >
         <ListItem className="flex items-center gap-2 py-2 pr-4">
@@ -196,13 +196,13 @@ export default function MegaMenuWithHover() {
   }, []);
  
   return (
-    <Navbar className="w-full">
-      <div className="flex items-center justify-between text-blue-gray-900">
+    <Navbar className="w-[100vw] p-0 m-0 border-none shadow-none bg-transparent">
+      <div className="flex items-center justify-between pl-[2vw]">
         <Typography
           as="a"
           href="#"
           variant="h6"
-          className="flex flex-row justify-center items-center gap-[1vw] mr-4 cursor-pointer
+          className="flex flex-row justify-center items-center gap-[1vw] cursor-pointer
            py-1.5 lg:ml-2 text-xl"
         >
           <img src={logo} alt='logo' className="rounded-full h-[5vw] w-[5vw]"/>

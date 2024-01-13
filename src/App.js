@@ -1,14 +1,9 @@
-import Mainpage from "./components/Mainpage";
-import Navbar1 from './components/Layout/Navbar.jsx'
-
-
+import Home from './Pages/Home.jsx'
 
 function App() {
   return (
     <div>
-      <Navbar1/>
-     <Mainpage/>
-
+     <Home/>
     </div>
   );
 }
