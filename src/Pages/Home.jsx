@@ -7,10 +7,6 @@ import './home.css'
 
 const Home = () => {
   return (
-    <div className="gradient">
-        <Navbar/>
-      <h1>Hello, React!</h1>
-    </div>
 
   )
 }
