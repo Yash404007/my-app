@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-
+import { Link } from 'react-router-dom';
 import styles from "./Navbar.module.css";
-import { getImageUrl } from "../../utils.js";
-import closeIcon from '../../assets/nav/closeIcon.png'
-import MenuIcon from '../../assets/nav/menuIcon.png'
 
 
  const Navbar = () => {
@@ -26,16 +23,23 @@ import MenuIcon from '../../assets/nav/menuIcon.png'
           onClick={() => setMenuOpen(false)}
         >
           <li>
-            <a href="#about">About</a>
+          <Link to='/'>
+              <div>About</div>
+            </Link>           </li>
+          <li>
+            <Link to='/Analysis'>
+            <div>Analysis</div>
+            </Link>
           </li>
           <li>
-            <a href="#experience">Experience</a>
+            <Link to='/Projects'>
+              <div>Projects</div>
+            </Link>       
           </li>
           <li>
-            <a href="#projects">Projects</a>
-          </li>
-          <li>
-            <a href="#about">Contact</a>
+            <Link to='/Contact'>
+              <div>Contact</div>
+            </Link>           
           </li>
         </ul>
       </div>
