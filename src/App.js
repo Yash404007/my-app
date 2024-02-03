@@ -6,6 +6,7 @@ import  Hero  from "./components/Hero/Hero";
 import  Navbar  from "./components/Navbar/Navbar";
 import  Projects  from "./components/Projects/Projects";
 import HomePage from "./Pages/HomePage.jsx";
+import DataIn from './components/Prediction/DataIn.jsx'
 import { BrowserRouter as  Router, Routes , Route, BrowserRouter, Navigate } from 'react-router-dom'
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
         <Route  exact path='/Hero'element={<Hero/>}/>        
         <Route  exact path='/About'element={<About/>}/>
         <Route  exact path='/Analysis'element={<Analysis/>}/>
-        <Route  exact path='/Projects'element={<Projects/>}/>
+        <Route  exact path='/Projects'element={<DataIn/>}/>
         <Route  exact path='/Contact'element={<Contact/>}/>
       </Routes>
 

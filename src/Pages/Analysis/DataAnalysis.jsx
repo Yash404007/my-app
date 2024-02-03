@@ -35,7 +35,8 @@ const Data = () => {
         <h1 className='coin-text'>Search a currency</h1>
         <form>
           <input
-            className='coin-input'
+            className='coin-input w-300 h-50 rounded-4 pr-20 py-2 pl-2
+             border-none bg-gradient-to-r from-purple-700 via-purple-900 to-indigo-900 text-gray-300'
             type='text'
             onChange={handleChange}
             placeholder='Search'
