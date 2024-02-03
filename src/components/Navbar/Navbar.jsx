@@ -33,7 +33,7 @@ import styles from "./Navbar.module.css";
           </li>
           <li>
             <Link to='/Projects'>
-              <div>Projects</div>
+              <div>Assessment</div>
             </Link>       
           </li>
           <li>
