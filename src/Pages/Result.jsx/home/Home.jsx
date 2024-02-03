@@ -1,8 +1,8 @@
 import React from "react"
-import Cards from "../cards/Cards"
-import Charts from "../charts/Charts"
-import TableData from "../table/TableData"
-import User from "../users/User"
+import Cards from "../cards/Card.jsx"
+import Charts from "../cards/charts/Charts.jsx"
+import TableData from "../table/TableData.jsx"
+import User from "../users/User.jsx"
 
 const Home = () => {
   return (

@@ -7,6 +7,8 @@ import  Navbar  from "./components/Navbar/Navbar";
 import  Projects  from "./components/Projects/Projects";
 import HomePage from "./Pages/HomePage.jsx";
 import DataIn from './components/Prediction/DataIn.jsx'
+import Result from './Pages/Result.jsx/home/Home.jsx'
+
 import { BrowserRouter as  Router, Routes , Route, BrowserRouter, Navigate } from 'react-router-dom'
 
 function App() {
@@ -16,7 +18,7 @@ function App() {
       <Routes>
         <Route  exact path='/'element={<HomePage/>}/>
         <Route  exact path='/Hero'element={<Hero/>}/>        
-        <Route  exact path='/About'element={<About/>}/>
+        <Route  exact path='/About'element={<Result/>}/>
         <Route  exact path='/Analysis'element={<Analysis/>}/>
         <Route  exact path='/Projects'element={<DataIn/>}/>
         <Route  exact path='/Contact'element={<Contact/>}/>

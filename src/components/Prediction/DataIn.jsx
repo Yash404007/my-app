@@ -1,6 +1,9 @@
 import { Button } from '@material-tailwind/react';
 import React from 'react'
 import { useState } from 'react';
+import {fireDB } from "../../firebaseConfig";
+import {  setDoc, doc, addDoc, collection } from "firebase/firestore";
+
 
 const DataIn = () => {
     const [category, setCategory] = useState('');
@@ -9,12 +12,70 @@ const DataIn = () => {
     const [realPrice, setRealPrice] = useState('');
     const [showPrice, setShowPrice] = useState("");
     const [size, setSize] = useState('');
-    const [fabric, setFabric] = useState('');
+    // const [fabric, setFabric] = useState('');
     const [stock, setStock] = useState('');
-    const [image, setImage] = useState([]);
-    const [totalImageList, setTotalImageList] = useState([]);
-    const [coverImage, setCoverImage] = useState([]);
+    // const [image, setImage] = useState([]);
+    // const [totalImageList, setTotalImageList] = useState([]);
+    // const [coverImage, setCoverImage] = useState([]);
     const [description, setDescription] = useState('');
+
+    const addProduct = async () => {
+      if (
+        title.trim() === "" ||
+        price.trim() === "" ||
+        category.trim() === "" ||
+        size.trim() === "" ||
+        description.trim() === "" ||
+        stock.trim() === "" ||
+        realPrice.trim() === "" ||
+        showPrice.trim() === ""
+      ) {
+        return console.log("All fields are required");
+      }
+  
+      try {
+        const productRef = collection(fireDB, "finStatus");
+        const docRef = await addDoc(productRef, {
+          price: price,
+          title: title,
+          size: size,
+          description: description,
+          createdAt: new Date().toUTCString(),
+          stock: stock,
+          realPrice: realPrice,
+          category: category,
+          showPrice: showPrice,
+        });
+  
+        await setDoc(doc(fireDB, "finStatus", docRef.id), {
+          price: price,
+          title: title,
+          size: size,
+          description: description,
+          createdAt: new Date().toUTCString(),
+          stock: stock,
+          realPrice: realPrice,
+          category: category,
+          showPrice: showPrice,
+          id: docRef.id,
+        });
+  
+        // Reset state values
+        setTitle("");
+        setPrice("");
+        setCategory("");
+        setSize("");
+        setStock("");
+        setRealPrice("");
+        setShowPrice("");
+        setDescription("");
+  
+        console.log("Product Added successfully");
+      } catch (error) {
+        console.log("Error adding product:", error);
+        console.log("Failed to add product");
+      }
+    };
 
   return (
 <div className='col-span-3 flex items-center justify-center pb-[10vw]' >
@@ -79,6 +140,7 @@ const DataIn = () => {
 
             </div>
             <Button
+            onClick={addProduct}
             color="blue" className='tracking-wider text-black font-[600] text-[1.3vw]'>
                 Submit
             </Button>
