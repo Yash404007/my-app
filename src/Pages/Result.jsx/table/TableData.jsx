@@ -20,10 +20,10 @@ const rows = [createData(1, "Adminto Admin v1", "01/01/2017", "26/04/2017", "Rel
 const TableData = () => {
   return (
     <>
-      <section className='project'>
+      <section className='project w-full'>
         <div className='user cardBox'>
           <Common title='Inbox' />
-          <div className='userBox'>
+          {/* <div className='userBox'>
             {data.map((value) => {
               return (
                 <div className='cardBox flexSB'>
@@ -40,14 +40,14 @@ const TableData = () => {
                 </div>
               )
             })}
-          </div>
+          </div> */}
         </div>
-        <div className='table cardBox'>
+        <div className='table cardBox w-full'>
           <Common title='Latest Projects' />
-          <div className='tableBox'>
-            <TableContainer component={Paper} sx={{ boxShadow: "none", borderRadius: "none" }}>
+          <div className='tableBox w-full'>
+            <TableContainer component={Paper} className="w-full" sx={{ boxShadow: "none", borderRadius: "none" }}>
               <Table
-                className='tableContainer'
+                className='tableContainer w-full'
                 sx={{
                   minWidth: 650,
                   background: "#313844",

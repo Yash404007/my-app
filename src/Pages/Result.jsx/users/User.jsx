@@ -2,15 +2,15 @@ import React from "react"
 import data from "./data"
 import "./users.module.css"
 
-const User = () => {
+const User = (value) => {
   return (
     <>
-      <section className='users grid'>
+      <section className={`users grid grid-cols-4 justify-center items-center px-[4vw]`}>
         {data.map((value) => {
           return (
-            <div className='cardBox flexSB'>
+            <div className='cardBox '>
               <div className='img'>
-                <img className='imageCircle' src={value.cover} alt='' />
+                <img src={value.cover} alt='' className="imageCircle w-[15vw] h-[22.5vw] object-cover object-center" />
               </div>
               <div className='title'>
                 <h3>{value.title}</h3>

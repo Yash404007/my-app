@@ -69,7 +69,8 @@ const Cards = () => {
 
   return (
     <>
-      <section className='cards grid'>
+      <section className='cards grid justify-center grid-cols-2 m-0 h-[20vw] w-full px-7'>
+        <div className="bg-gradient-to-r from-indigo-800 to-blue-900 shadow-xl w-[40vw] p-5 rounded-[1vw]">
         <div className='cardBox'>
           <Common title='Total Revenue' />
           <div className='circle'>
@@ -77,7 +78,7 @@ const Cards = () => {
               <ReactApexChart options={data.options} series={data.series} type='radialBar' height={150} />
             </div>
             <div className='title row'>
-              <h1>256</h1>
+              <h1 className="">256</h1>
               <p>Revenue today</p>
             </div>
           </div>
@@ -96,6 +97,9 @@ const Cards = () => {
           </div>
           <Progress done='70' />
         </div>
+        </div>
+
+        <div className="bg-gradient-to-r from-indigo-800 to-blue-900 shadow-xl w-[40vw] p-5 rounded-[1vw]">
         <div className='cardBox'>
           <Common title='Total Revenue' />
           <div className='circle'>
@@ -122,6 +126,8 @@ const Cards = () => {
           </div>
           <Progress done='70' />
         </div>
+        </div>
+        
       </section>
     </>
   )

@@ -167,6 +167,8 @@ const Charts = () => {
   return (
     <>
       <section className='charts grid2'>
+       <div className="grid grid-rows-2">
+        <div className="grid grid-cols-2">
         <div className='cardBox'>
           <Common title='Daily Sales' />
           <ReactApexChart options={data.options} series={data.series} type='donut' height={350} />
@@ -175,10 +177,12 @@ const Charts = () => {
           <Common title='Statistics' />
           <ReactApexChart options={bardata.options} series={bardata.series} type='bar' height={350} />
         </div>
+        </div>
         <div className='cardBox'>
           <Common title='Total Revenue' />
           <ReactApexChart options={line.options} series={line.series} type='line' height={350} />
-        </div>
+        </div></div>
+       
       </section>
     </>
   )
