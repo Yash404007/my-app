@@ -8,8 +8,8 @@ import  Projects  from "./components/Projects/Projects";
 import HomePage from "./Pages/HomePage.jsx";
 import DataIn from './components/Prediction/DataIn.jsx'
 import Result from './Pages/Result.jsx/home/Home.jsx'
-
 import { BrowserRouter as  Router, Routes , Route, BrowserRouter, Navigate } from 'react-router-dom'
+import DataOut from "./components/Prediction/DataOut.jsx";
 
 function App() {
   return (
@@ -22,6 +22,8 @@ function App() {
         <Route  exact path='/Analysis'element={<Analysis/>}/>
         <Route  exact path='/Projects'element={<DataIn/>}/>
         <Route  exact path='/Contact'element={<Contact/>}/>
+        <Route  exact path='/DataOut'element={<DataOut/>}/>
+        
       </Routes>
 
     </div>

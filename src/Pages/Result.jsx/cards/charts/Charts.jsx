@@ -2,45 +2,76 @@ import React from "react"
 import Common from "../../../common/Common.jsx"
 import "./chart.module.css"
 import ReactApexChart from "react-apexcharts"
+import { useEffect } from "react"
+
 
 const Charts = () => {
-  const data = {
-    series: [44, 55, 41],
-    options: {
-      chart: {
-        type: "donut",
-        // add this by typing
-        foreColor: "grey",
-      },
-      fill: {
-        colors: ["#35B8E0", "#6658DD", "#FF8ACC"],
-      },
-      stroke: {
-        colors: ["#313844"],
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      plotOptions: {
-        pie: {
-          expandOnClick: false,
-          donut: {
-            labels: {
+
+  const financialMetricStrings = localStorage.getItem('financialMetrics');
+
+  // Parse the JSON string to convert it back to an object
+  const financialMetrics = JSON.parse(financialMetricStrings);
+  
+  // Destructure the object properties to access the variables
+  const {
+    age,
+    familyStatus,
+    debtToIncomeRatio,
+    savingsRate,
+    emergencyFundStatus,
+    expenseToIncomeRatio,
+    investmentGoalsProgress,
+    timeConstraint,
+    riskTolerance,
+    income,
+    expenses,
+    savings,
+    debt,
+    emergencyFund
+  } = financialMetrics;
+
+console.log(expenses, debt, savings, emergencyFund)
+const expensesNumber = parseFloat(expenses);
+const debtNumber = parseFloat(debt);
+const savingsNumber = parseFloat(savings);
+
+const data = {
+  series: [expensesNumber, debtNumber, savingsNumber],
+  options: {
+    chart: {
+      type: "donut",
+      // add this by typing
+      foreColor: "grey",
+    },
+    fill: {
+      colors: ["#35B8E0", "#6658DD", "#FF8ACC"],
+    },
+    stroke: {
+      colors: ["#313844"],
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    plotOptions: {
+      pie: {
+        expandOnClick: false,
+        donut: {
+          labels: {
+            show: true,
+            total: {
+              showAlways: true,
               show: true,
-              total: {
-                showAlways: true,
-                show: true,
-              },
             },
           },
         },
       },
-      labels: ["In-Store Sales", "Download Sales", "Mail-Order Sales"],
-      legend: {
-        position: "bottom",
-      },
     },
-  }
+    labels: ["Expenses", "Debt", "Savings"],
+    legend: {
+      position: "bottom",
+    },
+  },
+};
 
   const bardata = {
     series: [
@@ -107,11 +138,11 @@ const Charts = () => {
   const line = {
     series: [
       {
-        name: "Sales",
+        name: "debtToIncomeRatio",
         data: [50, 60, 10, 60, 80, 30],
       },
       {
-        name: "Revenu",
+        name: "expenseToIncomeRatio,",
         data: [0, 40, 80, 20, 40, 60],
       },
     ],
@@ -168,11 +199,7 @@ const Charts = () => {
     <>
       <section className='charts grid2'>
        <div className="grid grid-rows-2">
-        <div className="grid grid-cols-2">
-        <div className='cardBox'>
-          <Common title='Daily Sales' />
-          <ReactApexChart options={data.options} series={data.series} type='donut' height={350} />
-        </div>
+        <div className="grid grid-rows">
         <div className='cardBox'>
           <Common title='Statistics' />
           <ReactApexChart options={bardata.options} series={bardata.series} type='bar' height={350} />

@@ -5,32 +5,60 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp"
 import Common from "../../common/Common"
 
 const Cards = () => {
-  const data = {
-    series: [58],
-    options: {
-      chart: {
-        height: 150,
-        type: "radialBar",
-        foreColor: "grey",
-      },
-      plotOptions: {
-        radialBar: {
-          hollow: {
-            size: "58%",
-          },
-          dataLabels: {
-            value: {
-              show: false,
-            },
+  const financialMetricStrings = localStorage.getItem('financialMetrics');
+
+  // Parse the JSON string to convert it back to an object
+  const financialMetrics = JSON.parse(financialMetricStrings);
+  
+  // Destructure the object properties to access the variables
+  const {
+    age,
+    familyStatus,
+    debtToIncomeRatio,
+    savingsRate,
+    emergencyFundStatus,
+    expenseToIncomeRatio,
+    investmentGoalsProgress,
+    timeConstraint,
+    riskTolerance,
+    income,
+    expenses,
+    savings,
+    debt,
+    emergencyFund
+  } = financialMetrics;
+
+  const debtToIncomeRatioNumber = parseFloat(debtToIncomeRatio);
+  const savingsNumber = parseFloat(savings * 0.1);
+console.log(savingsNumber)
+const data = {
+  series: [savingsNumber],
+  options: {
+    chart: {
+      height: 150,
+      type: "radialBar",
+    },
+    plotOptions: {
+      radialBar: {
+        hollow: {
+          size: "58%",
+        },
+        //add it
+        dataLabels: {
+          value: {
+            show: false,
           },
         },
       },
-      labels: ["58"],
-      colors: ["#ff5b5b"],
     },
-  }
+    labels: [(savingsNumber.toFixed(0))],
+    colors: ["#ff5b5b"],
+  },
+}
+const debtNumber = parseFloat(debt * 0.1);
+console.log("debt: " + debtNumber)
   const data1 = {
-    series: [80],
+    series: [debtNumber],
     options: {
       chart: {
         height: 150,
@@ -49,7 +77,7 @@ const Cards = () => {
           },
         },
       },
-      labels: ["80"],
+      labels: [(debtNumber.toFixed(0))],
       colors: ["#E9B251"],
     },
   }
@@ -78,20 +106,20 @@ const Cards = () => {
               <ReactApexChart options={data.options} series={data.series} type='radialBar' height={150} />
             </div>
             <div className='title row'>
-              <h1 className="">256</h1>
-              <p>Revenue today</p>
+              <h1 className="flex justify-center text-[1.75vw]">Savings per 100</h1>
+              <p>Savings</p>
             </div>
           </div>
         </div>
         <div className='cardBox'>
-          <Common title='Sales Analytics' />
+          <Common title='Income Analytics' />
           <div className='circle'>
             <div className='batch row'>
-              <span>32%</span>
+              <span>12%</span>
               <TrendingUpIcon className='batchIcon' />
             </div>
             <div className='title row'>
-              <h1>8451</h1>
+              <h1>Total savings: ${savings}</h1>
               <p>Revenue today</p>
             </div>
           </div>
@@ -107,20 +135,20 @@ const Cards = () => {
               <ReactApexChart options={data1.options} series={data1.series} type='radialBar' height={150} />
             </div>
             <div className='title row'>
-              <h1>256</h1>
-              <p>Revenue today</p>
+              <h1 className="flex justify-center text-[1.75vw]">Debt per 100</h1>
+              <p>Debt</p>
             </div>
           </div>
         </div>
         <div className='cardBox'>
-          <Common title='Sales Analytics' />
+          <Common title='Income Analytics' />
           <div className='circle'>
-            <div className='batch batch1 row'>
-              <span>32%</span>
+            <div className='batch row'>
+              <span>12%</span>
               <TrendingUpIcon className='batchIcon' />
             </div>
             <div className='title row'>
-              <h1>8451</h1>
+              <h1>Total Debt: ${debt}</h1>
               <p>Revenue today</p>
             </div>
           </div>
