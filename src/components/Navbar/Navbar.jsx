@@ -23,8 +23,8 @@ import styles from "./Navbar.module.css";
           onClick={() => setMenuOpen(false)}
         >
           <li>
-          <Link to='/About'>
-              <div>About</div>
+          <Link to='/About/:financialData'>
+              <div>MyReport</div>
             </Link>           </li>
           <li>
             <Link to='/Analysis'>

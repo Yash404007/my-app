@@ -3,7 +3,7 @@ import React from 'react'
 import { useState } from 'react';
 import {fireDB } from "../../firebaseConfig";
 import {  setDoc, doc, addDoc, collection } from "firebase/firestore";
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const DataIn = () => {
     const [income, setIncome] = useState('');
@@ -23,6 +23,7 @@ const DataIn = () => {
     const [emergencyFundStatus, setEmergencyFundStatus] = useState(0);
     const [expenseToIncomeRatio, setExpenseToIncomeRatio] = useState(0);
     const [investmentGoalsProgress, setInvestmentGoalsProgress] = useState(0);
+    const navigate = useNavigate();
 
     const addProduct = async () => {
       if (
@@ -55,6 +56,37 @@ const DataIn = () => {
           age: age,
           timeConstraint: timeConstraint,
         });
+        const debtToIncomeRatioValue =
+        (parseFloat(debt) / parseFloat(income)) * 100;
+      const savingsRateValue =
+        (parseFloat(savings) / parseFloat(income)) * 100;
+      const emergencyFundStatusValue =
+        parseFloat(emergencyFund) / (3 * (parseFloat(expenses) / 12));
+      const expenseToIncomeRatioValue =
+        (parseFloat(expenses) / parseFloat(income)) * 100;
+      const investmentGoalsProgressValue =
+        (parseFloat(currentStocks) +
+          parseFloat(currentBonds) +
+          parseFloat(income) * 0.25 * 3) /
+        parseFloat(investmentGoals);
+
+        localStorage.setItem('financialMetrics', JSON.stringify({
+          debtToIncomeRatio: debtToIncomeRatioValue,
+          savingsRate: savingsRateValue,
+          emergencyFundStatus: emergencyFundStatusValue,
+          expenseToIncomeRatio: expenseToIncomeRatioValue,
+          investmentGoalsProgress: investmentGoalsProgressValue,
+          age:age,
+          riskTolerance:riskTolerance,
+          familyStatus:familyStatus,
+          timeConstraint:timeConstraint,
+          income: income,
+          expenses:expenses,
+          emergencyFund:emergencyFund,
+          savings:savings,
+          debt:debt
+  
+      }));
   
         await setDoc(doc(fireDB, "finStatus", docRef.id), {
           familyStatus: familyStatus,
@@ -70,45 +102,6 @@ const DataIn = () => {
           timeConstraint: timeConstraint,
           id: docRef.id,
         });
-
-        const debtToIncomeRatioValue =
-        (parseFloat(debt) / parseFloat(income)) * 100;
-      const savingsRateValue =
-        (parseFloat(savings) / parseFloat(income)) * 100;
-      const emergencyFundStatusValue =
-        parseFloat(emergencyFund) / (3 * (parseFloat(expenses) / 12));
-      const expenseToIncomeRatioValue =
-        (parseFloat(expenses) / parseFloat(income)) * 100;
-      const investmentGoalsProgressValue =
-        (parseFloat(currentStocks) +
-          parseFloat(currentBonds) +
-          parseFloat(income) * 0.25 * 3) /
-        parseFloat(investmentGoals);
-  
-      // Log the calculated values
-      console.log("Debt to Income Ratio:", debtToIncomeRatioValue);
-      console.log("Savings Rate:", savingsRateValue);
-      console.log("Emergency Fund Status:", emergencyFundStatusValue);
-      console.log("Expense to Income Ratio:", expenseToIncomeRatioValue);
-      console.log("Investment Goals Progress:", investmentGoalsProgressValue);
-      
-      localStorage.setItem('financialMetrics', JSON.stringify({
-        debtToIncomeRatio: debtToIncomeRatioValue,
-        savingsRate: savingsRateValue,
-        emergencyFundStatus: emergencyFundStatusValue,
-        expenseToIncomeRatio: expenseToIncomeRatioValue,
-        investmentGoalsProgress: investmentGoalsProgressValue,
-        age:age,
-        riskTolerance:riskTolerance,
-        familyStatus:familyStatus,
-        timeConstraint:timeConstraint,
-        income: income,
-        expenses:expenses,
-        emergencyFund:emergencyFund,
-        savings:savings,
-        debt:debt
-
-    }));
         // Reset state values
         setFamilyStatus("");
         setDebt("");
@@ -122,12 +115,14 @@ const DataIn = () => {
         setInvestmentGoals("");
   
         console.log("Product Added successfully");
+        navigate("/About/:financialData")
        
       } catch (error) {
         console.log("Error adding product:", error);
         console.log("Failed to add product");
       }
     };
+    
 
   return (
 <div className='col-span-3 flex items-center justify-center pb-[10vw]' >
@@ -197,13 +192,13 @@ const DataIn = () => {
     </select>
 
             </div>
-         <Link to="/About"> 
-          <Button
+            {/* <Link to={{ pathname: "/About/:financialData", state: { financialData } }}> */}
+            <Button
             onClick={addProduct}
             color="blue" className='tracking-wider text-black font-[600] text-[1.3vw]'>
                 Submit
             </Button>
-          </Link>
+          {/* </Link> */}
         </div>  
     </div>
 </div>
