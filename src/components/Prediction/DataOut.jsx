@@ -71,11 +71,12 @@ const DataOut = () => {
 
   return (
     <div>
-        <h2>Financial Advice</h2>
-        <div>
-            hello
+        <div className='flex justify-center text-[1.75vw] font-[600] '>Financial Advice</div>
+        <div className="my-[1vw] text-[1.5vw]">
+            Hello, Customer👋
         </div>
-            <p>{financialAdvice}</p>
+            <p className="leading-[3.85vw] m-[1.5vw] text-[2vw] flex justify-between font-[600]">"{financialAdvice}"!!!</p>
+
     </div>
   )
 }
