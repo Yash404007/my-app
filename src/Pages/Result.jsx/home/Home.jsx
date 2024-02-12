@@ -7,16 +7,26 @@ import User from "../users/User.jsx"
 const Home = () => {
   return (
     <>
-      <section className='home'>
-        <div className='container'>
-          <div className='heading flexSB'>
-            <h3>DashBoard</h3>
-            <span>Adminto / DashBoard</span>
+      <section className='home  m-0 w-full'>
+        <div className='container p-5 m-0 w-full'>
+          <div className='heading flexSB '>
+            <h3 className="">DashBoard</h3>
+            <span className=""> Adminto / DashBoard</span>
           </div>
-          <Cards />
+          <div className="flex flex-col gap-[7vw]">
+         <div>
+         <Cards />
+          </div> 
+          <div>
           <Charts />
-          <User />
-          <TableData />
+            </div>
+          </div>
+          <div className="mt-[2vw]">
+         <User />
+         </div> 
+         <div clasName="mt-[2vw]">
+         <TableData />
+         </div>
         </div>
       </section>
     </>
