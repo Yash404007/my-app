@@ -1,6 +1,6 @@
 import React from "react"
-import Common from "../../common/Common"
-import "./chart.css"
+import Common from "../../../common/Common.jsx"
+import "./chart.module.css"
 import ReactApexChart from "react-apexcharts"
 
 const Charts = () => {

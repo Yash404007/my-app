@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import "./header.css"
+import "./header.module.css"
 import Head from "../head/Head"
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined"
 import InvertColorsOutlinedIcon from "@mui/icons-material/InvertColorsOutlined"

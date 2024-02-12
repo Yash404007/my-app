@@ -1,6 +1,6 @@
 import React from "react"
 import ReactApexChart from "react-apexcharts"
-import "./cards.css"
+import "./card.module.css"
 import TrendingUpIcon from "@mui/icons-material/TrendingUp"
 import Common from "../../common/Common"
 
